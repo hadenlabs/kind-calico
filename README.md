@@ -12,11 +12,11 @@
 
   -->
 
-[![Latest Release](https://img.shields.io/github/release/hadenlabs/base-template)](https://github.com/hadenlabs/base-template/releases) [![Lint](https://img.shields.io/github/workflow/status/hadenlabs/base-template/lint-code)](https://github.com/hadenlabs/base-template/actions?workflow=lint-code) [![CI](https://img.shields.io/github/workflow/status/hadenlabs/base-template/ci)](https://github.com/hadenlabs/base-template/actions?workflow=ci) [![Test](https://img.shields.io/github/workflow/status/hadenlabs/base-template/test)](https://github.com/hadenlabs/base-template/actions?workflow=test) [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit) [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow)](https://conventionalcommits.org) [![KeepAChangelog](https://img.shields.io/badge/changelog-Keep%20a%20Changelog%20v1.0.0-orange)](https://keepachangelog.com)
+[![Latest Release](https://img.shields.io/github/release/hadenlabs/kind-calico)](https://github.com/hadenlabs/kind-calico/releases) [![Lint](https://img.shields.io/github/workflow/status/hadenlabs/kind-calico/lint-code)](https://github.com/hadenlabs/kind-calico/actions?workflow=lint-code) [![CI](https://img.shields.io/github/workflow/status/hadenlabs/kind-calico/ci)](https://github.com/hadenlabs/kind-calico/actions?workflow=ci) [![Test](https://img.shields.io/github/workflow/status/hadenlabs/kind-calico/test)](https://github.com/hadenlabs/kind-calico/actions?workflow=test) [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit) [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow)](https://conventionalcommits.org) [![KeepAChangelog](https://img.shields.io/badge/changelog-Keep%20a%20Changelog%20v1.0.0-orange)](https://keepachangelog.com)
 
-# base-template
+# kind-calico
 
-base-template for project
+kind-calico for project
 
 ## Requirements
 
@@ -33,14 +33,14 @@ This is a list of plugins that need to be installed previously to enjoy all the 
 ## Replace name project to New Project
 
 ```bash
-agr 'base-template' 'new-project'
+agr 'kind-calico' 'new-project'
 ```
 
 ## Examples
 
 <!-- Space: Projects -->
-<!-- Parent: BaseTemplate -->
-<!-- Title: Examples BaseTemplate -->
+<!-- Parent: KindCalico -->
+<!-- Title: Examples KindCalico -->
 <!-- Label: Examples -->
 <!-- Include: ./../disclaimer.md -->
 <!-- Include: ac:toc -->
@@ -57,7 +57,7 @@ task setup
 
 **Got a question?**
 
-File a GitHub [issue](https://github.com/hadenlabs/base-template/issues).
+File a GitHub [issue](https://github.com/hadenlabs/kind-calico/issues).
 
 ## Contributing
 
@@ -90,6 +90,6 @@ All other trademarks referenced herein are the property of their respective owne
 
 The code and styles are licensed under the LGPL-3.0 license [See project license.](LICENSE).
 
-## Don't forget to 🌟 Star 🌟 the repo if you like base-template
+## Don't forget to 🌟 Star 🌟 the repo if you like kind-calico
 
-[Your feedback is appreciated](https://github.com/hadenlabs/base-template/issues)
+[Your feedback is appreciated](https://github.com/hadenlabs/kind-calico/issues)

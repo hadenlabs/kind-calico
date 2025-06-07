@@ -1,6 +1,6 @@
 <!-- Space: Projects -->
-<!-- Parent: BaseTemplate -->
-<!-- Title: Examples BaseTemplate -->
+<!-- Parent: KindCalico -->
+<!-- Title: Examples KindCalico -->
 <!-- Label: Examples -->
 <!-- Include: ./../disclaimer.md -->
 <!-- Include: ac:toc -->

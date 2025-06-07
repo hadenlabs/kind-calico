@@ -1,7 +1,7 @@
 <!-- Space: Projects -->
-<!-- Parent: BaseTemplate -->
-<!-- Title: EnvVars BaseTemplate -->
-<!-- Label: BaseTemplate -->
+<!-- Parent: KindCalico -->
+<!-- Title: EnvVars KindCalico -->
+<!-- Label: KindCalico -->
 <!-- Label: Project -->
 <!-- Label: EnvVars -->
 <!-- Include: disclaimer.md -->

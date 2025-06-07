@@ -68,7 +68,7 @@ dotenv:
   - .env
 
 vars:
-  PROJECT_NAME: base-template
+  PROJECT_NAME: kind-calico
   ORGANIZATION: hadenlabs
   USER: ubuntu
   DOCKER_PLATFORM: linux/amd64

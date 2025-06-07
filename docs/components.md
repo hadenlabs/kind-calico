@@ -1,7 +1,7 @@
 <!-- Space: Projects -->
-<!-- Parent: BaseTemplate -->
-<!-- Title: Components BaseTemplate -->
-<!-- Label: BaseTemplate -->
+<!-- Parent: KindCalico -->
+<!-- Title: Components KindCalico -->
+<!-- Label: KindCalico -->
 <!-- Label: Project -->
 <!-- Label: Components -->
 <!-- Include: disclaimer.md -->
