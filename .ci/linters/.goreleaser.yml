@@ -64,7 +64,6 @@ changelog:
     exclude:
       - "^docs:"
       - "^test:"
-
 release:
   github:
     owner: hadenlabs
