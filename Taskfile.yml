@@ -75,7 +75,7 @@ env:
     sh: echo {{.K8S_BUILD_PATH}}/keys
   K8S_PROVISION_PATH:
     sh: echo provision/k8s/manifests
-  KEYBASE_OWNER: infosisglobal
+  KEYBASE_OWNER: hadenlabs
   KEYBASE_TEAM_PATH:
     sh: echo "{{.KEYBASE_VOLUME_PATH}}"/team/{{.KEYBASE_OWNER}}.infrastructure
   KEYBASE_PROJECT_PATH:
