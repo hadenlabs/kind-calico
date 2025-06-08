@@ -23,18 +23,26 @@ kind-calico for project
 This is a list of plugins that need to be installed previously to enjoy all the goodies of this configuration:
 
 - [gomplate](https://github.com/hairyhenderson/gomplate)
-- [python](https://www.python.org)
+- [Docker](https://www.docker.com)
 - [taskfile](https://github.com/go-task/task)
 
 ## Usage
 
 # How to use this project
 
-## Replace name project to New Project
+## Start Project
 
 ```bash
-agr 'kind-calico' 'new-project'
+task environment
 ```
+
+```bash
+task setup
+```
+
+- See [Kind](/docs/usage/kind.md)
+- See [Databases](/docs/usage/databases.md)
+- See [apps](/docs/usage/apps.md)
 
 ## Examples
 

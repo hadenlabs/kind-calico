@@ -574,4 +574,9 @@ build
 .pmd
 vendor
 !uv.lock
+charts
+.DS_Store
+provision/kind/cluster/calico.yml
+provision/kind/cluster/cilium.yml
+provision/kind/cluster/default.yml
 
