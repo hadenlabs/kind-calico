@@ -46,6 +46,8 @@ includes:
     taskfile: "https://raw.githubusercontent.com/hadenlabs/tasks/refs/heads/main/src/openssl/Taskfile.yml"
   terraform:
     taskfile: "https://raw.githubusercontent.com/hadenlabs/tasks/refs/heads/main/src/terraform/Taskfile.yml"
+  kind:
+    taskfile: "provision/task/kind.yml"
 
 env:
   DOCKER:
@@ -63,6 +65,25 @@ env:
   README_INCLUDES: file://
   TERRAFORM_PATH: ./
   PYTHON_PACKAGE_MANAGER: uv
+  DOCKER_IP_CONTROL_PLANE: 192.168.68.110
+  DOCKER_DOMAIN_RESOLVER: hadenlabs.local
+  BUILD_PATH:
+    sh: echo build
+  K8S_BUILD_PATH:
+    sh: echo {{.BUILD_PATH}}/k8s
+  K8S_BUILD_KEYS_PATH:
+    sh: echo {{.K8S_BUILD_PATH}}/keys
+  K8S_PROVISION_PATH:
+    sh: echo provision/k8s/manifests
+  KEYBASE_OWNER: infosisglobal
+  KEYBASE_TEAM_PATH:
+    sh: echo "{{.KEYBASE_VOLUME_PATH}}"/team/{{.KEYBASE_OWNER}}.infrastructure
+  KEYBASE_PROJECT_PATH:
+    sh: echo "{{.KEYBASE_TEAM_PATH}}"/github.com/hadenlabs/kind-calico
+  SOPS_AGE_KEY_FILE:
+    sh: echo "{{.KEYBASE_PROJECT_PATH}}"/age/key.txt
+  K8S_PATH:
+    sh: echo {{.KEYBASE_PROJECT_PATH}}/k8s
 
 dotenv:
   - .env
@@ -101,6 +122,11 @@ vars:
     .pmd
     vendor
     !uv.lock
+    charts
+    .DS_Store
+    provision/kind/cluster/calico.yml
+    provision/kind/cluster/cilium.yml
+    provision/kind/cluster/default.yml
 
 tasks:
   default:
@@ -177,6 +203,7 @@ tasks:
       - task: terraform:environment
       - task: uv:environment
       - task: pnpm:environment
+      - cmd: mkdir -p {{.K8S_PATH}}
 
   generate:
     desc: Generate files

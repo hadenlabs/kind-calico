@@ -1,0 +1,82 @@
+---
+version: "3"
+
+tasks:
+  check:
+    desc: Exist kind and dependences
+    run: once
+    deps:
+      - task: check:kind
+      - task: check:mkcert
+      - task: check:docker
+
+  check:kind:
+    desc: Exist kind
+    run: once
+    preconditions:
+      - sh: command -v kind
+        msg: "Please Install kind"
+
+  check:docker:
+    desc: Exist docker
+    run: once
+    preconditions:
+      - sh: command -v docker
+        msg: "Please Install docker"
+
+  check:mkcert:
+    desc: Exist mkcert
+    run: once
+    preconditions:
+      - sh: command -v mkcert
+        msg: "Please Install mkcert"
+
+  make:
+    desc: make kind
+    deps:
+      - task: check
+    cmds:
+      - |
+        kind create cluster --config provision/kind/cluster/calico.yml
+
+  network:
+    desc: make network for kind
+    deps:
+      - task: check
+    cmds:
+      - |
+        if ! docker network inspect {{ .PROJECT_NAME }}-bridge-network >/dev/null 2>&1; then
+          docker network create \
+            --driver=bridge \
+            --subnet=192.168.68.0/24 \
+            {{ .PROJECT_NAME }}-bridge-network
+        else
+          echo "the network {{ .PROJECT_NAME }}-bridge-network exist."
+        fi
+
+  certificates:
+    desc: make certificates and export.
+    deps:
+      - task: check
+    cmds:
+      - cmd: mkcert '*.{{ .DOCKER_DOMAIN_RESOLVER }}'
+      - cmd: mkdir -p {{.KEYBASE_PROJECT_PATH}}/keys/
+      - cmd: mv _wildcard.{{ .DOCKER_DOMAIN_RESOLVER }}.pem {{.KEYBASE_PROJECT_PATH}}/keys/
+      - cmd: mv _wildcard.{{ .DOCKER_DOMAIN_RESOLVER }}-key.pem {{.KEYBASE_PROJECT_PATH}}/keys/
+    status:
+      - test -f {{.KEYBASE_PROJECT_PATH}}/keys/_wildcard.{{ .DOCKER_DOMAIN_RESOLVER }}.pem
+      - test -f {{.KEYBASE_PROJECT_PATH}}/keys/_wildcard.{{ .DOCKER_DOMAIN_RESOLVER }}-key.pem
+
+  certificates:key:
+    desc: show key
+    deps:
+      - task: check
+    cmds:
+      - cmd: cat {{.KEYBASE_PROJECT_PATH}}/keys/_wildcard.{{ .DOCKER_DOMAIN_RESOLVER }}-key.pem
+
+  certificates:crt:
+    desc: show crt
+    deps:
+      - task: check
+    cmds:
+      - cmd: cat {{.KEYBASE_PROJECT_PATH}}/keys/_wildcard.{{ .DOCKER_DOMAIN_RESOLVER }}.pem

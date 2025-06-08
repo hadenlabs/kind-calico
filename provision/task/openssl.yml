@@ -31,13 +31,22 @@ tasks:
           STAGE: testing
 
   make:
-    desc: Exist openssl
+    desc: generate ssh pem
     run: once
     deps:
       - task: check
     cmds:
       - >-
-        openssl genrsa -out {{.PROJECT_NAME}}-{{.STAGE}}.pem 2048
+        ssh-keygen -q -m PEM -t rsa -b 4096
+        -C "admin@{{.PROJECT_NAME}}.com" -f {{.PROJECT_NAME}} -P ""
       - >-
-        openssl rsa -in {{.PROJECT_NAME}}-{{.STAGE}}.pem
-        -pubout -out {{.PROJECT_NAME}}-{{.STAGE}}.public.pem
+        openssl rsa -in {{.PROJECT_NAME}} -outform pem > {{.PROJECT_NAME}}.pem
+      - >-
+        chmod 0600 {{.PROJECT_NAME}}.pem
+      - mv {{.PROJECT_NAME}} {{.KEYBASE_PROJECT_PATH}}/{{.STAGE}}/keys/
+      - mv {{.PROJECT_NAME}}.pem {{.KEYBASE_PROJECT_PATH}}/{{.STAGE}}/keys/
+      - mv {{.PROJECT_NAME}}.pub {{.KEYBASE_PROJECT_PATH}}/{{.STAGE}}/keys/
+    status:
+      - test -f {{.KEYBASE_PROJECT_PATH}}/{{.STAGE}}/keys/{{.PROJECT_NAME}}
+      - test -f {{.KEYBASE_PROJECT_PATH}}/{{.STAGE}}/keys/{{.PROJECT_NAME}}.pem
+      - test -f {{.KEYBASE_PROJECT_PATH}}/{{.STAGE}}/keys/{{.PROJECT_NAME}}.pub

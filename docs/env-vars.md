@@ -11,4 +11,10 @@
 
 ## Env Vars
 
-### Application
+### Infrastructure
+
+| Name                 | Description                  | default | sample                   | Required |
+| -------------------- | ---------------------------- | ------- | ------------------------ | :------: |
+| SOPS_AGE_KEY_FILE    | filename encrypt values sops |         | keybase_path/age/key.txt |   yes    |
+| KEYBASE_TEAM_PATH    | path team keybase            |         |                          |   yes    |
+| KEYBASE_PROJECT_PATH | path project keybase         |         |                          |   yes    |

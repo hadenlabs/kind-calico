@@ -48,7 +48,7 @@ requirements: |-
   This is a list of plugins that need to be installed previously to enjoy all the goodies of this configuration:
 
   - [gomplate](https://github.com/hairyhenderson/gomplate)
-  - [python](https://www.python.org)
+  - [Docker](https://www.docker.com)
   - [taskfile](https://github.com/go-task/task)
 
 # Short description of this project
@@ -57,7 +57,7 @@ description: |-
   kind-calico for project
 
 usages:
-  - docs/usage.md
+  - docs/usage/main.md
 
 examples:
   - "docs/examples/common.md"
