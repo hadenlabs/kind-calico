@@ -1,0 +1,74 @@
+global:
+  storageClass: "local-storage"
+  postgresql:
+    auth:
+      username: user_default
+      database: default
+      existingSecret: default-postgresql
+      secretKeys:
+        adminPasswordKey: postgres_admin_password
+        userPasswordKey: postgres_user_password
+        replicationPasswordKey: postgres_replication_password
+auth:
+  username: user_default
+  database: default
+  existingSecret: default-postgresql
+  secretKeys:
+    adminPasswordKey: postgres_admin_password
+    userPasswordKey: postgres_user_password
+    replicationPasswordKey: postgres_replication_password
+
+## @param architecture PostgreSQL architecture (`standalone` or `replication`)
+##
+architecture: standalone
+
+## @section PostgreSQL Primary parameters
+##
+primary:
+  ## PostgreSQL Primary persistence configuration
+  ##
+  persistence:
+    ## @param primary.persistence.enabled Enable PostgreSQL Primary data persistence using PVC
+    ##
+    enabled: true
+    ## @param primary.persistence.existingClaim Name of an existing PVC to use
+    ##
+    existingClaim: "default-db"
+    ## @param primary.persistence.mountPath The path the volume will be mounted at
+    ## Note: useful when using custom PostgreSQL images
+    ##
+    mountPath: /bitnami/postgresql
+    ## @param primary.persistence.subPath The subdirectory of the volume to mount to
+    ## Useful in dev environments and one PV for multiple services
+    ##
+    subPath: ""
+    ## @param primary.persistence.storageClass PVC Storage Class for PostgreSQL Primary data volume
+    ## If defined, storageClassName: <storageClass>
+    ## If set to "-", storageClassName: "", which disables dynamic provisioning
+    ## If undefined (the default) or set to null, no storageClassName spec is
+    ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
+    ##   GKE, AWS & OpenStack)
+    ##
+    storageClass: "local-storage"
+    ## @param primary.persistence.accessModes PVC Access Mode for PostgreSQL volume
+    ##
+    accessModes:
+      - ReadWriteOnce
+    ## @param primary.persistence.size PVC Storage Request for PostgreSQL volume
+    ##
+    size: 8Gi
+    ## @param primary.persistence.annotations Annotations for the PVC
+    ##
+    annotations: {}
+    ## @param primary.persistence.labels Labels for the PVC
+    ##
+    labels: {}
+    ## @param primary.persistence.selector Selector to match an existing Persistent Volume (this value is evaluated as a template)
+    ## selector:
+    ##   matchLabels:
+    ##     app: my-app
+    ##
+    selector: {}
+    ## @param primary.persistence.dataSource Custom PVC data source
+    ##
+    dataSource: {}

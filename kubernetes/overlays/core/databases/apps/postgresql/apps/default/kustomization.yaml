@@ -1,0 +1,20 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: postgresql
+
+components:
+  - ../../base/transformers
+
+generatorOptions:
+  immutable: true
+
+transformers:
+  - transformers/label.yaml
+  - transformers/annotation.yaml
+
+resources:
+  - resources/secrets.yaml
+  - resources/persistentvolume.yaml
+  - resources/persistentvolumeclaim.yaml
+  - resources/helm

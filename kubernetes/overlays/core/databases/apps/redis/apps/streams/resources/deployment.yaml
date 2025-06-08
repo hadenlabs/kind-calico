@@ -1,0 +1,35 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: streams
+spec:
+  template:
+    spec:
+      containers:
+        - name: redis
+          image: redis:latest
+          imagePullPolicy: "IfNotPresent"
+          args: ["--requirepass", "$(REDIS_PASSWORD)"]
+          ports:
+            - name: redis
+              containerPort: 6379
+          envFrom:
+            - configMapRef:
+                name: environment-variables
+            - configMapRef:
+                name: streams
+            - secretRef:
+                name: streams
+          resources:
+            requests:
+              memory: "250Mi"
+              cpu: "250m"
+            limits:
+              memory: "500Mi"
+              cpu: "500m"
+          securityContext:
+            allowPrivilegeEscalation: false
+      imagePullSecrets:
+        - name: hadenlabs-pull-secret
+        - name: harbor-pull-secret

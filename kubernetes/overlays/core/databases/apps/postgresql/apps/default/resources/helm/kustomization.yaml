@@ -1,0 +1,13 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+helmCharts:
+  - name: postgresql
+    releaseName: default
+    repo: https://charts.bitnami.com/bitnami
+    version: 12.6.9
+    valuesFile: values/postgresql.yaml
+    includeCRDs: true
+
+commonAnnotations:
+  meta.helm.sh/release-name: default

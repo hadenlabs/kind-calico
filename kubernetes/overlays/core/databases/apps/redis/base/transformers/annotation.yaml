@@ -1,0 +1,14 @@
+apiVersion: builtin
+kind: AnnotationsTransformer
+metadata:
+  name: prometheusAnnotationsTransformer
+annotations:
+  prometheus.io/probe: "true"
+
+fieldSpecs:
+  - kind: Service
+    path: metadata/annotations
+    create: true
+  - kind: Ingress
+    path: metadata/annotations
+    create: true

@@ -1,0 +1,45 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: ingress-nginx
+
+generatorOptions:
+  immutable: true
+
+components:
+  - ../../../../base
+
+transformers:
+  - transformers/label.yaml
+  - transformers/annotation.yaml
+
+resources:
+  - resources/namespace.yaml
+  - resources/secrets.yaml
+  - resources/persistentvolume.yaml
+  - resources/persistentvolumeclaim.yaml
+  - resources/hpa.yaml
+  - resources/helm
+  - resources/ingress.yaml
+  - resources/networkpolicy.yaml
+
+  # - https://raw.githubusercontent.com/kubernetes/ingress-nginx/helm-chart-4.9.1/deploy/static/provider/baremetal/deploy.yaml
+# patches:
+# - path: patches/deployment-ingress-nginx-controller.yaml
+#   target:
+#     group: apps
+#     version: v1
+#     kind: Deployment
+#     name: ingress-nginx-controller
+# - path: patches/job-ingress-nginx-admission-patch.yaml
+#   target:
+#     group: batch
+#     version: v1
+#     kind: Job
+#     name: ingress-nginx-admission-patch
+# - path: patches/job-ingress-nginx-admission-create.yaml
+#   target:
+#     group: batch
+#     version: v1
+#     kind: Job
+#     name: ingress-nginx-admission-create

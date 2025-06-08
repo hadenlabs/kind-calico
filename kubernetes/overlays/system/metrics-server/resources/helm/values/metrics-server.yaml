@@ -1,0 +1,25 @@
+apiService:
+  insecureSkipTLSVerify: true
+fullnameOverride: metrics-server
+args:
+  - --kubelet-insecure-tls
+  - --kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname
+  - --kubelet-use-node-status-port
+  - --metric-resolution=15s
+
+metrics:
+  enabled: false
+serviceMonitor:
+  enabled: false
+
+containerPort: 10265
+
+hostNetwork:
+  # Specifies if metrics-server should be started in hostNetwork mode.
+  #
+  # You would require this enabled if you use alternate overlay networking for pods and
+  # API server unable to communicate with metrics-server. As an example, this is required
+  # if you use Weave network on EKS
+  enabled: true
+
+replicas: 1
