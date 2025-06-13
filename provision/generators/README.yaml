@@ -50,11 +50,12 @@ requirements: |-
   - [gomplate](https://github.com/hairyhenderson/gomplate)
   - [Docker](https://www.docker.com)
   - [taskfile](https://github.com/go-task/task)
+  - [kind](https://kind.sigs.k8s.io)
 
 # Short description of this project
 description: |-
 
-  kind-calico for project
+  cluster with calico
 
 usages:
   - docs/usage/main.md
