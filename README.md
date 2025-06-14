@@ -16,7 +16,7 @@
 
 # kind-calico
 
-kind-calico for project
+cluster with calico
 
 ## Requirements
 
@@ -25,6 +25,7 @@ This is a list of plugins that need to be installed previously to enjoy all the 
 - [gomplate](https://github.com/hairyhenderson/gomplate)
 - [Docker](https://www.docker.com)
 - [taskfile](https://github.com/go-task/task)
+- [kind](https://kind.sigs.k8s.io)
 
 ## Usage
 
@@ -41,6 +42,8 @@ task setup
 ```
 
 - See [Kind](/docs/usage/kind.md)
+- See [System](/docs/usage/system.md)
+- See [Ingress Controller](/docs/usage/ingress-controller.md)
 - See [Databases](/docs/usage/databases.md)
 - See [apps](/docs/usage/apps.md)
 
