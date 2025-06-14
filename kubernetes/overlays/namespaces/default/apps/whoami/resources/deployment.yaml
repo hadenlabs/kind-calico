@@ -15,8 +15,6 @@ spec:
               containerPort: 80
           envFrom:
             - configMapRef:
-                name: environment-variables
-            - configMapRef:
                 name: whoami-env
           volumeMounts:
             - name: whoami-logs

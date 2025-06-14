@@ -22,5 +22,5 @@ resources:
 
 images:
   - name: registry.hadenlabs.com/toolkit/whoami
-    newName: registry.hadenlabs.com/toolkit/whoami
+    newName: traefik/whoami
     newTag: latest
